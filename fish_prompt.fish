@@ -21,8 +21,6 @@ function prompt_long_pwd -d 'Print the current working directory'
 end
 
 function fish_prompt
-  set_props
-
   set -l last_command_status $status
 
   set -l default_prompt "\$" 
@@ -45,6 +43,8 @@ function fish_prompt
 
   set -l ssh_host_color (set_color --bold red)
   set -l default_host_color (set_color yellow)
+
+  set_props
 
   # Time
   if test $theme_show_time = 'yes'
