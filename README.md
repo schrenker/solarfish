@@ -4,8 +4,12 @@
   </a>
 </div>
 <br>
-[![Oh My Fish](https://img.shields.io/badge/Framework-Oh_My_Fish-blue.svg?style=flat)](https://github.com/oh-my-fish/oh-my-fish)
-[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE)
+<p align="center">
+  <a href="https://github.com/oh-my-fish/oh-my-fish" alt="Oh My Fish">
+    <img src="https://img.shields.io/badge/Framework-Oh_My_Fish-blue.svg" /></a>
+  <a href="/LICENSE" alt="Oh My Fish">
+    <img src="https://img.shields.io/badge/license-MIT-007EC7.svg" /></a>
+</p>
 
 > A simple, git-aware, two-line theme for [Oh My Fish][omf-link]. Based off of [simple-ass-prompt](https://github.com/lfiolhais/theme-simple-ass-prompt), optimized for [solarized](https://ethanschoonover.com/solarized/).
 
