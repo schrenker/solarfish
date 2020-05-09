@@ -1,7 +1,8 @@
 # List of options:
 # 
 # set -g theme_display_time yes/no
-# set -g theme_short_dir yes/no
+# set -g theme_short_path yes/no
+# set -g theme_current_folder_path yes/no
 
 function set_props -d 'Set default prop values'
   if test -z "$theme_show_time"
