@@ -4,13 +4,13 @@
 # set -g theme_short_dir yes/no
 
 function set_props -d 'Set default prop values'
-  if -z "$theme_show_time"
+  if test -z "$theme_show_time"
     set -g theme_show_time no
   end
-  if -z "$theme_short_path"
+  if test -z "$theme_short_path"
     set -g theme_short_path no
   end
-  if -z "$theme_current_folder_path"
+  if test -z "$theme_current_folder_path"
     set -g theme_current_folder_path no
   end
 end
