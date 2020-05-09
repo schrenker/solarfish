@@ -3,12 +3,26 @@
 # set -g theme_display_time yes/no
 # set -g theme_short_dir yes/no
 
-function prompt_long_pwd --description 'Print the current working directory'
+function set_props -d 'Set default prop values'
+  if -z "$theme_show_time"
+    set -g theme_show_time no
+  end
+  if -z "$theme_short_path"
+    set -g theme_short_path no
+  end
+  if -z "$theme_current_folder_path"
+    set -g theme_current_folder_path no
+  end
+end
+
+function prompt_long_pwd -d 'Print the current working directory'
   # From https://stackoverflow.com/questions/866989/fish-interactive-shell-full-path/37337624
   echo $PWD | sed -e "s|^$HOME|~|" -e 's|^/private||'
 end
 
 function fish_prompt
+  set_props
+
   set -l last_command_status $status
 
   set -l default_prompt "\$" 
@@ -33,7 +47,7 @@ function fish_prompt
   set -l default_host_color (set_color yellow)
 
   # Time
-  if test -n "$theme_show_time" -a $theme_show_time = 'yes'
+  if test $theme_show_time = 'yes'
     echo -n -s  $time_color "[" (date +%H:%M) "]" $normal_color " "
   end
 
@@ -52,12 +66,12 @@ function fish_prompt
   end
 
   # Directory
-  if test -n "$theme_short_path" -a $theme_short_path = 'yes'
+  if test $theme_short_path = 'yes'
     set -U fish_prompt_pwd_dir_length 1
   else
     set -U fish_prompt_pwd_dir_length 0
   end
-  if test -n "$theme_current_folder_path" -a $theme_current_folder_path = 'yes'
+  if test $theme_current_folder_path = 'yes'
     echo -n -s " in " $directory_color (basename (pwd)) $normal_color
   else
     echo -n -s " in " $directory_color (prompt_pwd) $normal_color
