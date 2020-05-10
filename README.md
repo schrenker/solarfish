@@ -1,37 +1,35 @@
-<div align="center">
-  <a href="http://github.com/fish-shell/omf">
-  <img width=90px  src="https://cloud.githubusercontent.com/assets/8317250/8510172/f006f0a4-230f-11e5-98b6-5c2e3c87088f.png">
-  </a>
-</div>
-<br>
-<p align="center">
-  <a href="https://github.com/oh-my-fish/oh-my-fish" alt="Oh My Fish">
-    <img src="https://img.shields.io/badge/Framework-Oh_My_Fish-blue.svg" /></a>
-  <a href="/LICENSE" alt="Oh My Fish">
-    <img src="https://img.shields.io/badge/license-MIT-007EC7.svg" /></a>
-</p>
+<img src="https://cdn.rawgit.com/oh-my-fish/oh-my-fish/e4f1c2e0219a17e2c748b824004c8d0b38055c16/docs/logo.svg" align="left" width="144px" height="144px"/>
 
-> A simple, git-aware, two-line theme for [Oh My Fish][omf-link]. Based off of [simple-ass-prompt](https://github.com/lfiolhais/theme-simple-ass-prompt), optimized for [solarized](https://ethanschoonover.com/solarized/).
+#### theme-solarfish
+> A simple, git-aware, two-line theme for [Oh My Fish][omf-link]. Based off of [simple-ass-prompt](https://github.com/lfiolhais/theme-simple-ass-prompt) and optimized for [solarized](https://ethanschoonover.com/solarized/).
+
+[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE)
+[![Fish Shell Version](https://img.shields.io/badge/fish-v3.0.0-007EC7.svg?style=flat-square)](https://fishshell.com)
+[![Oh My Fish Framework](https://img.shields.io/badge/Oh%20My%20Fish-Framework-007EC7.svg?style=flat-square)](https://www.github.com/oh-my-fish/oh-my-fish)
+
+<br/>
+
 
 ## Install
 
 ```fish
-$ omf theme solarfish
+$ omf install theme-solarfish
 ```
+
 
 ## Features
 
-- Easily readable prompt
+- Easy to read prompt, based directly on the bash default prompt
 - Long, short, and current folder directory options
+- Timestamp option
 - Git repository status:
   - ahead "↑"
   - behind "↓"
   - diverged "⥄ "
-  - dirty "⨯"
-  - none "◦"
-- Command line timestamp (configurable)
+  - dirty "*"
 - Previous command status
 - Special greeting prompt if `cowsay` is installed!
+
 
 ## Screenshot
 
@@ -45,23 +43,23 @@ Add any of the following lines to
 `~/.config/fish/config.fish`
 
 ```fish
-# Display the timestamp in the prompt
+# Displays the timestamp in the prompt
 set -g theme_show_time yes
 
-# Use a short directory path name
+# Uses a short directory path name
 set -g theme_short_path yes
 
-# Display only the current folder name
+# Displays only the current folder name
 set -g theme_current_folder_path yes
 ```
 
 # License
 
-[MIT][mit] © [Bryan C][author]
+[MIT][mit] © [MrSiliconGuy][author]
 
-[mit]: http://opensource.org/licenses/MIT
-[author]: http://github.com/MrSiliconGuy
-[omf-link]: https://www.github.com/fish-shell/oh-my-fish
-[license-badge]: https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square
-[travis-badge]: http://img.shields.io/travis/oh-my-fish/theme-default.svg?style=flat-square
-[travis-link]: https://travis-ci.org/oh-my-fish/theme-default
+
+[mit]:            https://opensource.org/licenses/MIT
+[author]:         https://github.com/MrSiliconGuy
+[omf-link]:       https://www.github.com/oh-my-fish/oh-my-fish
+
+[license-badge]:  https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square
