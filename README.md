@@ -55,11 +55,11 @@ set -g theme_current_folder_path yes
 
 # License
 
-[MIT][mit] © [MrSiliconGuy][author]
+[MIT][mit] © [thesilican][author]
 
 
 [mit]:            https://opensource.org/licenses/MIT
-[author]:         https://github.com/MrSiliconGuy
+[author]:         https://github.com/thesilican
 [omf-link]:       https://www.github.com/oh-my-fish/oh-my-fish
 
 [license-badge]:  https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square
