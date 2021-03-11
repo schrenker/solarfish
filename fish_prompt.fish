@@ -11,7 +11,7 @@ function fish_prompt
 
   # Color Constants
   set -l normal_color           (set_color normal)
-  set -l secondary_color        (set_color brcyan)  
+  set -l secondary_color        (set_color brcyan)
 
   set -l default_user_color     (set_color red)
   set -l root_user_color        (set_color --bold red)
@@ -26,7 +26,7 @@ function fish_prompt
   set -l success_color          (set_color normal)
   set -l error_color            (set_color red)
 
-  # Set theme config default values  
+  # Set theme config default values
   if test -z "$theme_show_time"
     set -g theme_show_time no
   end
@@ -41,8 +41,8 @@ function fish_prompt
   end
 
   # Time
-  if test $theme_show_time = "yes"
-    echo -ns  $time_color "[" (date +%H:%M:%S) "]" $normal_color " "
+  if test "$theme_show_time" = "yes"
+    echo -ns $time_color "[" (date +%H:%M:%S) "]" $normal_color " "
   end
 
   # User
@@ -55,7 +55,7 @@ function fish_prompt
   echo -ns $secondary_color "@" $normal_color
 
   # Host
-  if test $SSH_TTY
+  if test "$SSH_TTY"
     echo -ns $ssh_host_color (hostname) $normal_color
   else
     echo -ns $default_host_color (hostname) $normal_color
@@ -64,10 +64,10 @@ function fish_prompt
   echo -ns $secondary_color ":" $normal_color
 
   # Directory
-  if test $theme_current_folder_path = "yes"
+  if test "$theme_current_folder_path" = "yes"
     echo -ns $directory_color (basename (pwd)) $normal_color
   else
-    if test $theme_short_path = "yes"
+    if test "$theme_short_path" = "yes"
       set -U fish_prompt_pwd_dir_length 1
     else
       set -U fish_prompt_pwd_dir_length 0
@@ -76,9 +76,10 @@ function fish_prompt
   end
 
   # Git repository
-  if not test $theme_no_git_indicator = "yes"; and git_is_repo
+  if not test "$theme_no_git_indicator" = "yes"; and git_is_repo
     echo -ns $repository_color " (" (git_branch_name) $normal_color
-    if git_is_dirty; or test (git_untracked)
+    set -l git_untracked (git_untracked)
+    if git_is_dirty; or test "$git_untracked"
       echo -ns " " $repository_icon_color $git_dirty $normal_color
     else if git_is_staged
       echo -ns " " $repository_icon_color $git_staged $normal_color
