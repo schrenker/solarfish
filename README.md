@@ -48,7 +48,7 @@ set -g theme_current_folder_path yes
 
 # Disable the git indicator
 # (May improve performance for large git repositories)
-set -g theme_no_git_indicator
+set -g theme_no_git_indicator yes
 ```
 
 # License
