@@ -46,7 +46,7 @@ function fish_prompt
   end
 
   # User
-  if test $USER = "root"
+  if fish_is_root_user
     echo -ns $root_user_color (whoami) $normal_color
   else
     echo -ns $default_user_color (whoami) $normal_color
@@ -98,7 +98,7 @@ function fish_prompt
   else
     echo -ns $error_color
   end
-  if test $USER = "root"
+  if fish_is_root_user
     echo -ns -e $root_prompt " " $normal_color
   else
     echo -ns -e $default_prompt " " $normal_color
