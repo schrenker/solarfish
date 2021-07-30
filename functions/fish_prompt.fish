@@ -17,8 +17,6 @@ function fish_prompt
     set -l color_host_default (set_color yellow)
     set -l color_host_ssh (set_color --bold red)
     set -l color_directory (set_color green)
-    set -l color_repository (set_color magenta)
-    set -l color_repository_icon (set_color cyan)
     set -l color_status_success (set_color normal)
     set -l color_status_error (set_color red)
 
@@ -58,17 +56,37 @@ function fish_prompt
 
     # Git repository
     if not test "$theme_no_git_indicator" = yes; and git_is_repo
-        set -l git_prompt $color_repository " (" (git_branch_name)
-        if git_is_dirty; or git_untracked
-            set -a git_prompt " " $color_repository_icon $git_dirty
-        else if git_is_staged
-            set -a git_prompt " " $color_repository_icon $git_staged
-        else
-            set -a git_prompt $color_repository_icon \
-                (git_ahead " $git_ahead" " $git_behind" " $git_diverged" "")
-        end
-        set -a git_prompt $color_repository ")" $color_normal
-        echo -ns $git_prompt
+        set -g __fish_git_prompt_show_informative_status yes
+        set -g __fish_git_prompt_showdirtystate yes
+        set -g __fish_git_prompt_showuntrackedfiles yes
+        set -g __fish_git_prompt_showupstream auto
+        set -g __fish_git_prompt_showstashstate yes
+        set -g __fish_git_prompt_showcolorhints yes
+
+        set -g __fish_git_prompt_char_stateseparator " "
+        set -g __fish_git_prompt_color magenta
+        set -g __fish_git_prompt_color_branch magenta
+        set -g __fish_git_prompt_color_branch_detached red
+
+        set -g __fish_git_prompt_color_cleanstate cyan
+        set -g __fish_git_prompt_color_dirtystate cyan
+        set -g __fish_git_prompt_color_invalidstate cyan
+        set -g __fish_git_prompt_color_stagedstate cyan
+        set -g __fish_git_prompt_color_stashstate cyan
+        set -g __fish_git_prompt_color_untrackedfiles cyan
+        set -g __fish_git_prompt_color_upstream cyan
+
+        set -g __fish_git_prompt_char_upstream_prefix " "
+        set -g __fish_git_prompt_char_cleanstate ""
+        set -g __fish_git_prompt_char_dirtystate "*"
+        set -g __fish_git_prompt_char_invalidstate "#"
+        set -g __fish_git_prompt_char_stagedstate "+"
+        set -g __fish_git_prompt_char_untrackedfiles "%"
+        set -g __fish_git_prompt_char_upstream_ahead "↑"
+        set -g __fish_git_prompt_char_upstream_behind "↓"
+        set -g __fish_git_prompt_char_upstream_diverged "⥄"
+
+        fish_git_prompt
     end
 
     # Prompt
