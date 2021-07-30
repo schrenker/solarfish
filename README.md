@@ -11,10 +11,12 @@
 <br/>
 
 <p align="center">
-<img src="https://i.imgur.com/CxG9s8q.png">
+<img src="https://i.imgur.com/601hz24.png">
 </p>
 
 ## Install
+
+You must first have [Oh My Fish](omf-link) installed
 
 ```fish
 $ omf install solarfish
@@ -29,7 +31,7 @@ $ omf install solarfish
   - ahead "↑"
   - behind "↓"
   - diverged "⥄ "
-- Previous command status (prompt turns red on error)
+- Previous command status (prompt turns red with non-zero status)
 
 ## Configuration
 
@@ -37,17 +39,10 @@ Add any of the following lines to
 `~/.config/fish/config.fish`
 
 ```fish
-# Displays the timestamp in the prompt
-set -g theme_show_time yes
-
-# Uses a short directory path name
+# Display a shortened directory path
 set -g theme_short_path yes
 
-# Displays only the current folder name
-set -g theme_current_folder_path yes
-
 # Disable the git indicator
-# (May improve performance for large git repositories)
 set -g theme_no_git_indicator yes
 ```
 
