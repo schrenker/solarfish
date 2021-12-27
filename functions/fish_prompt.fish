@@ -48,9 +48,9 @@ function fish_prompt
 
     # Directory
     if test "$theme_short_path" = yes
-        set fish_prompt_pwd_dir_length 1
+        set -g fish_prompt_pwd_dir_length 1
     else
-        set fish_prompt_pwd_dir_length 0
+        set -g fish_prompt_pwd_dir_length 0
     end
     echo -ns $color_directory (prompt_pwd) $color_normal
 
