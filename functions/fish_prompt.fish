@@ -55,7 +55,7 @@ function fish_prompt
     echo -ns $color_directory (prompt_pwd) $color_normal
 
     # Git repository
-    if not test "$theme_no_git_indicator" = yes; and git_is_repo
+    if not test "$theme_no_git_indicator" = yes
         set -g __fish_git_prompt_show_informative_status yes
         set -g __fish_git_prompt_showdirtystate yes
         set -g __fish_git_prompt_showuntrackedfiles yes
