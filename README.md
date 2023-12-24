@@ -1,25 +1,24 @@
-<img src="https://cdn.rawgit.com/oh-my-fish/oh-my-fish/e4f1c2e0219a17e2c748b824004c8d0b38055c16/docs/logo.svg" align="left" width="144px" height="144px"/>
+# solarfish
+[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg)](/LICENSE)
+[![Fish Shell Version](https://img.shields.io/badge/fish-v3.6.4-007EC7.svg)](https://fishshell.com)
 
-#### solarfish
-
-> A simple, git-aware, two-line theme for [Oh My Fish][omf-link]. Based off of [simple-ass-prompt](https://github.com/lfiolhais/theme-simple-ass-prompt) and the canonical bash prompt
-
-[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE)
-[![Fish Shell Version](https://img.shields.io/badge/fish-v3.0.0-007EC7.svg?style=flat-square)](https://fishshell.com)
-[![Oh My Fish Framework](https://img.shields.io/badge/Oh%20My%20Fish-Framework-007EC7.svg?style=flat-square)](https://www.github.com/oh-my-fish/oh-my-fish)
-
-<br/>
+A git-aware, two-line fish theme. Based off of [simple-ass-prompt](https://github.com/lfiolhais/theme-simple-ass-prompt) and the default bash prompt.
 
 <p align="center">
-<img src="https://i.imgur.com/601hz24.png">
+<img src="https://i.imgur.com/601hz24.png" alt="shell theme screenshot">
 </p>
 
 ## Install
 
-You must first have [Oh My Fish](omf-link) installed
+Using [fisher](https://github.com/joxji/fisher):
+```
+fisher install thesilican/theme-solarfish
+```
 
-```fish
-$ omf install solarfish
+Using [oh my fish](https://www.github.com/oh-my-fish/oh-my-fish):
+
+```
+omf install solarfish
 ```
 
 ## Features
@@ -35,10 +34,9 @@ $ omf install solarfish
 
 ## Configuration
 
-Add any of the following lines to
-`~/.config/fish/config.fish`
+Add any of the following lines to `~/.config/fish/config.fish`
 
-```fish
+```bash
 # Display a shortened directory path
 set -g theme_short_path yes
 
@@ -48,9 +46,4 @@ set -g theme_no_git_indicator yes
 
 # License
 
-[MIT][mit] © [thesilican][author]
-
-[mit]: https://opensource.org/licenses/MIT
-[author]: https://github.com/thesilican
-[omf-link]: https://www.github.com/oh-my-fish/oh-my-fish
-[license-badge]: https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square
+[MIT](https://opensource.org/licenses/MIT) © [thesilican](https://github.com/thesilican)
