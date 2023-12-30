@@ -10,9 +10,9 @@ A git-aware, two-line fish theme. Based off of [simple-ass-prompt](https://githu
 
 ## Install
 
-Using [fisher](https://github.com/joxji/fisher):
+Using [fisher](https://github.com/jorgebucaran/fisher):
 ```
-fisher install thesilican/theme-solarfish
+fisher install thesilican/solarfish
 ```
 
 Using [oh my fish](https://www.github.com/oh-my-fish/oh-my-fish):
