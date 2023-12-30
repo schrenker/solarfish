@@ -2,7 +2,7 @@ function fish_prompt
     # Constants
     set last_command_status $status
     set color_normal (set_color normal)
-    set color_secondary (set_color black)
+    set color_secondary (set_color normal)
     set color_user_default (set_color green)
     set color_user_root (set_color --bold red)
     set color_host_default (set_color green)
