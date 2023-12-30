@@ -1,16 +1,18 @@
 # solarfish
+
 [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg)](/LICENSE)
 [![Fish Shell Version](https://img.shields.io/badge/fish-v3.6.4-007EC7.svg)](https://fishshell.com)
 
 A git-aware two-line [fish shell](https://fishshell.com) theme. Based off of [simple-ass-prompt](https://github.com/lfiolhais/theme-simple-ass-prompt) and the default bash prompt.
 
 <p align="center">
-<img src="https://i.imgur.com/601hz24.png" alt="shell theme screenshot">
+<img src="https://i.imgur.com/wAmh3qP.png" alt="shell theme screenshot">
 </p>
 
 ## Install
 
 Using [fisher](https://github.com/jorgebucaran/fisher):
+
 ```
 fisher install thesilican/solarfish
 ```
