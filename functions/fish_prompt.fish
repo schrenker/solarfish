@@ -1,24 +1,18 @@
 function fish_prompt
     # Constants
-    set -l last_command_status $status
-    set -l prompt_default "\$"
-    set -l prompt_root "#"
-    set -l git_dirty "*"
-    set -l git_staged "+"
-    set -l git_ahead "↑"
-    set -l git_behind "↓"
-    set -l git_diverged "⥄"
-
-    # Color Constants
-    set -l color_normal (set_color normal)
-    set -l color_secondary (set_color brblue)
-    set -l color_user_default (set_color red)
-    set -l color_user_root (set_color --bold red)
-    set -l color_host_default (set_color yellow)
-    set -l color_host_ssh (set_color --bold red)
-    set -l color_directory (set_color green)
-    set -l color_status_success (set_color normal)
-    set -l color_status_error (set_color red)
+    set last_command_status $status
+    set color_normal (set_color normal)
+    set color_secondary (set_color black)
+    set color_user_default (set_color green)
+    set color_user_root (set_color --bold red)
+    set color_host_default (set_color green)
+    set color_host_ssh (set_color yellow)
+    set color_directory (set_color cyan)
+    set color_status_success (set_color normal)
+    set color_status_error (set_color red)
+    set color_git_background magenta
+    set color_git_detached red
+    set color_git_accent cyan
 
     # Configuration
     if test -z "$theme_no_git_indicator"
@@ -29,22 +23,20 @@ function fish_prompt
     end
 
     # User
-    set -l color_user
     if fish_is_root_user
         set color_user $color_user_root
     else
         set color_user $color_user_default
     end
-    echo -ns $color_user (whoami) $color_secondary "@" $color_normal
+    echo -ns $color_user "$USER" $color_normal $color_secondary "@"
 
     # Host
-    set -l color_host
-    if test -n "$SSH_CLIENT"
+    if test -n "$SSH_TTY"
         set color_host $color_host_ssh
     else
         set color_host $color_host_default
     end
-    echo -ns $color_host (hostname) $color_secondary ":" $color_normal
+    echo -ns $color_host (hostname) $color_secondary " "
 
     # Directory
     if test "$theme_short_path" = yes
@@ -52,9 +44,9 @@ function fish_prompt
     else
         set -g fish_prompt_pwd_dir_length 0
     end
-    echo -ns $color_directory (prompt_pwd) $color_normal
+    echo -ns $color_directory (prompt_pwd)
 
-    # Git repository
+    # Git status
     if not test "$theme_no_git_indicator" = yes
         set -g __fish_git_prompt_show_informative_status yes
         set -g __fish_git_prompt_showdirtystate yes
@@ -64,17 +56,17 @@ function fish_prompt
         set -g __fish_git_prompt_showcolorhints yes
 
         set -g __fish_git_prompt_char_stateseparator " "
-        set -g __fish_git_prompt_color magenta
-        set -g __fish_git_prompt_color_branch magenta
-        set -g __fish_git_prompt_color_branch_detached red
+        set -g __fish_git_prompt_color $color_git_background
+        set -g __fish_git_prompt_color_branch $color_git_background
+        set -g __fish_git_prompt_color_branch_detached $color_git_detached
 
-        set -g __fish_git_prompt_color_cleanstate cyan
-        set -g __fish_git_prompt_color_dirtystate cyan
-        set -g __fish_git_prompt_color_invalidstate cyan
-        set -g __fish_git_prompt_color_stagedstate cyan
-        set -g __fish_git_prompt_color_stashstate cyan
-        set -g __fish_git_prompt_color_untrackedfiles cyan
-        set -g __fish_git_prompt_color_upstream cyan
+        set -g __fish_git_prompt_color_cleanstate $color_git_accent
+        set -g __fish_git_prompt_color_dirtystate $color_git_accent
+        set -g __fish_git_prompt_color_invalidstate $color_git_accent
+        set -g __fish_git_prompt_color_stagedstate $color_git_accent
+        set -g __fish_git_prompt_color_stashstate $color_git_accent
+        set -g __fish_git_prompt_color_untrackedfiles $color_git_accent
+        set -g __fish_git_prompt_color_upstream $color_git_accent
 
         set -g __fish_git_prompt_char_upstream_prefix " "
         set -g __fish_git_prompt_char_cleanstate ""
@@ -85,22 +77,21 @@ function fish_prompt
         set -g __fish_git_prompt_char_upstream_ahead "↑"
         set -g __fish_git_prompt_char_upstream_behind "↓"
         set -g __fish_git_prompt_char_upstream_diverged "⥄"
+        set -g __fish_git_prompt_char_stashstate "⚑"
 
         fish_git_prompt
     end
 
     # Prompt
-    set -l color_status
     if test $last_command_status -eq 0
         set color_status $color_status_success
     else
         set color_status $color_status_error
     end
-    set -l prompt
     if fish_is_root_user
-        set prompt $prompt_root
+        set prompt "#"
     else
-        set prompt $prompt_default
+        set prompt "\$"
     end
-    echo -ns -e "\n" $color_status $prompt $color_normal " "
+    echo -nse "\n" $color_status $prompt $color_normal " "
 end
