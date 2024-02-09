@@ -1,6 +1,7 @@
 function fish_prompt
     # Constants
     set last_command_status $status
+    set last_command_name (history | head -1)
     set color_normal (set_color normal)
     set color_secondary (set_color normal)
     set color_user_default (set_color green)
@@ -80,6 +81,18 @@ function fish_prompt
         set -g __fish_git_prompt_char_stashstate "⚑"
 
         fish_git_prompt
+    end
+
+    # Kubectl
+    if test $last_command_status -eq 0
+        echo "$last_command_name" | grep -qE '^kubectl|^k |^kg |^kd '
+        if test $status -eq 0
+            set -g theme_show_kubectl yes
+        end
+    end
+
+    if test "$theme_show_kubectl" = yes
+        set_color blue; echo -ns " [ctx:" (kubectl config current-context) "]"
     end
 
     # Prompt
