@@ -84,19 +84,21 @@ function fish_prompt
     end
 
     # Kubectl
-    if test $last_command_status -eq 0
-        echo "$last_command_name" | grep -qE '^kubectl|^k |^kg |^kd |^kubectx|^kx|^kubens|^kns'
-        if test $status -eq 0
-            set -g theme_show_kubectl yes
+    if not test "$theme_no_kubectl_indicator" = yes
+        if test $last_command_status -eq 0
+            echo "$last_command_name" | grep -qE '^kubectl|^k |^kg |^kd |^kubectx|^kx|^kubens|^kns'
+            if test $status -eq 0
+                set -g __theme_show_kubectl yes
+            end
         end
-    end
 
-    if test "$theme_show_kubectl" = yes
-        set ns (kubectl config view --minify -ojsonpath='{..namespace}')
-        if test -z "$ns"
-            set ns "default"
+        if test "$__theme_show_kubectl" = yes
+            set ns (kubectl config view --minify -ojsonpath='{..namespace}')
+            if test -z "$ns"
+                set ns "default"
+            end
+            set_color blue; echo -ns " [" (kubectl config current-context) ":$ns" "]"
         end
-        set_color blue; echo -ns " [" (kubectl config current-context) ":$ns" "]"
     end
 
     # Prompt
