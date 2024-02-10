@@ -6,7 +6,8 @@
 A git-aware two-line [fish shell](https://fishshell.com) theme. Inspired by [simple-ass-prompt](https://github.com/lfiolhais/theme-simple-ass-prompt) and the default bash prompt.
 
 <p align="center">
-<img src="https://i.imgur.com/Ij2DTOh.png" alt="shell theme screenshot">
+<img src="https://i.imgur.com/8R8OJtm.png" alt="shell light theme screenshot">
+<img src="https://i.imgur.com/eNt8rhz.png" alt="shell dark theme screenshot">
 </p>
 
 ## Features
