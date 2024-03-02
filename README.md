@@ -17,7 +17,7 @@ A git-aware two-line [fish shell](https://fishshell.com) theme. Inspired by [sim
 - Previous command status (prompt turns red on error)
 - Root user indicator (username turns red when running as root)
 - Remote host indicator (hostname turns red when running under a ssh connection)
-- Kubectl context:namespace indicator after first use of kubectl in given shell session. Reacts to following commands/aliases:
+- Kubectl context:namespace indicator after first use of kubectl in given shell session. Reacts to following commands/aliases (configurable with `theme_kubectl_commands` list):
   - kubectl
   - k
   - kg
@@ -54,4 +54,7 @@ set -g theme_no_git_indicator yes
 
 # Disable kubectl indicator
 set -g theme_no_kubectl_indicator yes
+
+# Set your own kubectl commands to trigger context:namespace indicator
+set -g theme_kubectl_commands kubectl helm k kn
 ```

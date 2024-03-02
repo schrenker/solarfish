@@ -1,7 +1,7 @@
 function fish_prompt
     # Constants
     set last_command_status $status
-    set last_command_name (history | head -1)
+    set last_command_name (history | head -1 | cut -d' ' -f1)
     set color_normal (set_color normal)
     set color_secondary (set_color normal)
     set color_user_default (set_color green)
@@ -85,19 +85,24 @@ function fish_prompt
 
     # Kubectl
     if not test "$theme_no_kubectl_indicator" = yes
-        if test $last_command_status -eq 0
-            echo "$last_command_name" | grep -qE '^kubectl|^k |^kg |^kd |^kubectx|^kx|^kubens|^kns'
-            if test $status -eq 0
-                set -g __theme_show_kubectl yes
-            end
+        if test (count $theme_kubectl_commands) = 0
+            set -g theme_kubectl_commands \
+                kubectl k kg kd \
+                kubectx kx \
+                kubens kns \
+                helm
         end
 
-        if test "$__theme_show_kubectl" = yes
-            set ns (kubectl config view --minify -ojsonpath='{..namespace}')
-            if test -z "$ns"
-                set ns "default"
+        if test $last_command_status -eq 0
+            contains $last_command_name $theme_kubectl_commands
+            if test $status -eq 0
+                set ns (kubectl config view --minify -ojsonpath='{..namespace}')
+                if test -z "$ns"
+                    set ns default
+                end
+                set_color blue
+                echo -ns " [" (kubectl config current-context) ":$ns" "]"
             end
-            set_color blue; echo -ns " [" (kubectl config current-context) ":$ns" "]"
         end
     end
 
