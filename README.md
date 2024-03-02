@@ -35,12 +35,6 @@ Using [fisher](https://github.com/jorgebucaran/fisher):
 fisher install schrenker/solarfish
 ```
 
-Using [oh my fish](https://www.github.com/oh-my-fish/oh-my-fish):
-
-```
-omf install schrenker/solarfish
-```
-
 ## Configuration
 
 Add any of the following lines to `~/.config/fish/config.fish`
