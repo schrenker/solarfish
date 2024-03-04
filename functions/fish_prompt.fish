@@ -75,10 +75,10 @@ function fish_prompt
         set -g __fish_git_prompt_char_invalidstate "#"
         set -g __fish_git_prompt_char_stagedstate "+"
         set -g __fish_git_prompt_char_untrackedfiles "%"
-        set -g __fish_git_prompt_char_upstream_ahead "↑"
-        set -g __fish_git_prompt_char_upstream_behind "↓"
-        set -g __fish_git_prompt_char_upstream_diverged "⥄"
-        set -g __fish_git_prompt_char_stashstate "⚑"
+        set -g __fish_git_prompt_char_upstream_ahead "?"
+        set -g __fish_git_prompt_char_upstream_behind "?"
+        set -g __fish_git_prompt_char_upstream_diverged "?"
+        set -g __fish_git_prompt_char_stashstate "?"
 
         fish_git_prompt
     end
@@ -93,16 +93,22 @@ function fish_prompt
                 helm
         end
 
-        if test $last_command_status -eq 0
-            contains $last_command_name $theme_kubectl_commands
-            if test $status -eq 0
-                set ns (kubectl config view --minify -ojsonpath='{..namespace}')
-                if test -z "$ns"
-                    set ns default
+        if not test "$__theme_show_kubectl" = yes
+            if test $last_command_status -eq 0
+                contains $last_command_name $theme_kubectl_commands
+                if test $status -eq 0
+                    set -g __theme_show_kubectl yes
                 end
-                set_color blue
-                echo -ns " [" (kubectl config current-context) ":$ns" "]"
             end
+        end
+
+        if test "$__theme_show_kubectl" = yes
+            set ns (kubectl config view --minify -ojsonpath='{..namespace}')
+            if test -z "$ns"
+                set ns default
+            end
+            set_color blue
+            echo -ns " [" (kubectl config current-context) ":$ns" "]"
         end
     end
 
