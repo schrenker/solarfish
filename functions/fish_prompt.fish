@@ -103,12 +103,16 @@ function fish_prompt
         end
 
         if test "$__theme_show_kubectl" = yes
-            set ns (kubectl config view --minify -ojsonpath='{..namespace}')
+            set ctx (kubectl config current-context 2>/dev/null)
+            if test -z "$ctx"
+                set ctx "!"
+            end
+            set ns (kubectl config view --minify -ojsonpath='{..namespace}' 2>/dev/null)
             if test -z "$ns"
                 set ns default
             end
             set_color blue
-            echo -ns " [" (kubectl config current-context) ":$ns" "]"
+            echo -ns " [$ctx:$ns]"
         end
     end
 
