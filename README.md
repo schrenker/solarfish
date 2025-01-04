@@ -26,6 +26,7 @@ A git-aware two-line [fish shell](https://fishshell.com) theme. Inspired by [sim
   - kx
   - kubens
   - kns
+- nix-shell indicator (from any-nix-shell)
 
 ## Install
 
@@ -51,4 +52,7 @@ set -g theme_no_kubectl_indicator yes
 
 # Set your own kubectl commands to trigger context:namespace indicator
 set -g theme_kubectl_commands kubectl helm k kn
+
+# Disable any-nix-shell indicator
+set -g theme_no_any_nix_shell_indicator yes
 ```

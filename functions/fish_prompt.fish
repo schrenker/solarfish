@@ -116,6 +116,16 @@ function fish_prompt
         end
     end
 
+    # Nix-shell-anything
+    if not test "$theme_no_any_nix_shell_indicator" = yes
+        if type -q nix-shell-info
+            if test (nix-shell-info)
+                set_color green
+                echo -ns " [$(nix-shell-info | sed -e 's/\x1b\[[0-9;]*m//g')]"
+            end
+        end
+    end
+
     # Prompt
     if test $last_command_status -eq 0
         set color_status $color_status_success
